@@ -4,8 +4,8 @@ const loginRouter = require('express').Router()
 const User = require('../models/user')
 
 loginRouter.post('', async (request, response) => {
-    console.log("works")
     const body = request.body
+    console.log(body)
     const user = await User.findOne({ username: body.username })
     const passwordCorrect = user === null
         ? false
