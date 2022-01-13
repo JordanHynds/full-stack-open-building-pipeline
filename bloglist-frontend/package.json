@@ -44,12 +44,7 @@
   },
   "proxy": "http://localhost:3001",
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.1",
     "@testing-library/react": "^12.1.0",
-    "cypress": "^8.4.0",
-    "eslint-plugin-jest": "^24.4.0"
-  },
-  "resolutions": {
-    "babel-jest": "24.7.1"
+    "cypress": "^8.4.0"
   }
 }
