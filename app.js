@@ -10,7 +10,7 @@ const userRouter = require('./controllers/User')
 const loginRouter = require('./controllers/Login')
 const middleware = require('./utils/middleware')
 
-
+console.log(config.mongoUri);
 mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 
 app.use(express.static('build'))
