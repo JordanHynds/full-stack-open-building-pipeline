@@ -19,6 +19,8 @@ jobs:
         run: npm install
       - name: npm install frontend
         run: cd bloglist-frontend && npm install
+      - name: eslint backend
+        run: npm run eslint
       - name: eslint frontend
         run: cd bloglist-frontend && npm run eslint
       - name: unit testing backend
