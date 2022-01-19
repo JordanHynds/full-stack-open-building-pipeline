@@ -26,7 +26,7 @@ jobs:
       - name: Create env file
         run: |
           touch .env
-          echo mongo_Uri=${{ secrets.MONGO_URI }} >> .env
+          echo mongo_Uri="mongodb+srv://fullstack:fullstack@cluster0.bvfhm.mongodb.net/Blog?retryWrites=true&w=majority" >> .env
           cat .env
       - name: build
         run: npm run build
