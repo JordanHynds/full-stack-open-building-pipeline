@@ -11,7 +11,7 @@ const loginRouter = require("./controllers/Login")
 const testingRouter = require("./controllers/Testing")
 const middleware = require("./utils/middleware")
 
-mongoose.connect("mongodb+srv://fullstack:fullstack@cluster0.bvfhm.mongodb.net/Blog?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
+mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 
 app.use(express.static("build"))
 app.use(cors())
