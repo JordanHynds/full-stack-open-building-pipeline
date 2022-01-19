@@ -21,8 +21,6 @@ jobs:
         run: cd bloglist-frontend && npm install
       - name: eslint frontend
         run: cd bloglist-frontend && npm run eslint
-      - name: unit testing frontend
-        run: cd bloglist-frontend && SKIP_PREFLIGHT_CHECK=true npm run test
       - name: unit testing backend
         run: npm run test
       - name: e2e tests

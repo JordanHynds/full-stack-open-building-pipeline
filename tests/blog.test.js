@@ -1,4 +1,4 @@
-const listHelper = require('../utils/list_helper')
+const listHelper = require("../utils/list_helper")
 const testblogs = [
     {
         _id: "5a422a851b54a676234d17f7",
@@ -50,96 +50,96 @@ const testblogs = [
     }
 ]
 
-test('dummy returns one', () => {
+test("dummy returns one", () => {
     const blogs = []
 
     const result = listHelper.dummy(blogs)
     expect(result).toBe(1)
 })
 
-describe('total likes', () => {
+describe("total likes", () => {
     const blogs = []
-    test('no blogs', () => {
+    test("no blogs", () => {
         expect(listHelper.totalLikes(blogs)).toBe(0)
     })
 })
 
-describe('total likes', () => {
+describe("total likes", () => {
     const blogs = testblogs.slice(1, 2)
-    test('one blog', () => {
+    test("one blog", () => {
         expect(listHelper.totalLikes(blogs)).toBe(5)
     })
 })
 
-describe('total likes', () => {
+describe("total likes", () => {
     const blogs = testblogs
-    test('mutiple blogs', () => {
+    test("mutiple blogs", () => {
         expect(listHelper.totalLikes(blogs)).toBe(36)
     })
 })
 
-describe('favorite blog', () => {
+describe("favorite blog", () => {
     const blogs = []
-    test('no blogs', () => {
+    test("no blogs", () => {
         expect(listHelper.favoriteBlog(blogs)).toEqual({})
     })
 })
 
-describe('favorite blog', () => {
+describe("favorite blog", () => {
     const blogs = testblogs.slice(1, 2)
-    test('one blogs', () => {
+    test("one blogs", () => {
         expect(listHelper.favoriteBlog(blogs)).toEqual(blogs[0])
     })
 })
 
 
-describe('favorite blog', () => {
+describe("favorite blog", () => {
     const blogs = testblogs
-    test('multiple blogs', () => {
+    test("multiple blogs", () => {
         expect(listHelper.favoriteBlog(blogs)).toEqual(blogs[2])
     })
 })
 
-describe('most blogs', () => {
+describe("most blogs", () => {
     const blogs = []
-    test('no blogs', () => {
+    test("no blogs", () => {
         expect(listHelper.mostBlogs(blogs)).toEqual({})
     })
 })
 
-describe('most blogs', () => {
+describe("most blogs", () => {
     const blogs = testblogs.slice(1, 2)
-    test('one blogs', () => {
+    test("one blogs", () => {
         expect(listHelper.mostBlogs(blogs)).toEqual({ author: "Edsger W. Dijkstra", blogs: 1 })
     })
 })
 
 
-describe('most blogs', () => {
+describe("most blogs", () => {
     const blogs = testblogs
-    test('multiple blogs', () => {
+    test("multiple blogs", () => {
         expect(listHelper.mostBlogs(blogs)).toEqual({ author: "Robert C. Martin", blogs: 3 })
     })
 })
 
-describe('most likes', () => {
+describe("most likes", () => {
     const blogs = []
-    test('no blogs', () => {
+    test("no blogs", () => {
         expect(listHelper.mostLikes(blogs)).toEqual({})
     })
 })
 
-describe('most likes', () => {
+describe("most likes", () => {
     const blogs = testblogs.slice(1, 2)
-    test('one blogs', () => {
+    test("one blogs", () => {
         expect(listHelper.mostLikes(blogs)).toEqual({ author: "Edsger W. Dijkstra", likes: 5 })
     })
 })
 
 
-describe('most likes', () => {
+describe("most likes", () => {
     const blogs = testblogs
-    test('multiple blogs', () => {
+    test("multiple blogs", () => {
         expect(listHelper.mostLikes(blogs)).toEqual({ author: "Edsger W. Dijkstra", likes: 17 })
     })
 })

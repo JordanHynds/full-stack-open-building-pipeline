@@ -1,13 +1,13 @@
-const jwt = require('jsonwebtoken')
-const { response } = require('express')
-const User = require('../models/user')
+const jwt = require("jsonwebtoken")
+const { response } = require("express")
+const User = require("../models/user")
 const errorHandler = (error, request, response, next) => {
-    if (error.name === 'ValidationError') {
+    if (error.name === "ValidationError") {
         return response.status(400).send({ error: error.message })
-    } else if (error.name === 'CastError') {
-        return response.status(404).send({ error: 'blog does not exsit' })
-    } else if (error.name === 'ReferenceError') {
-        return response.status(404).send({ error: 'blog does not exsit' })
+    } else if (error.name === "CastError") {
+        return response.status(404).send({ error: "blog does not exsit" })
+    } else if (error.name === "ReferenceError") {
+        return response.status(404).send({ error: "blog does not exsit" })
     } else if (error.name === "JsonWebTokenError") {
         return response.status(401).send({ error: error.message })
     }
@@ -15,8 +15,8 @@ const errorHandler = (error, request, response, next) => {
 }
 
 const getTokenFrom = request => {
-    const authorization = request.get('authorization')
-    if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
+    const authorization = request.get("authorization")
+    if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
         return authorization.substring(7)
     }
     return null
