@@ -11,11 +11,23 @@ jobs:
     steps:
       - name: check
         run: echo "hello"
-      # - uses: actions/checkout@v2
-      # - uses: actions/setup-node@v1
-      #   with:
-      #     node-version: "12.x"
-      # - name: npm install
-      #   run: npm install
-      - name: eslint
-        run: ls -l
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - name: npm install backend
+        run: npm install
+      - name: npm install frontend
+        run: cd bloglist-frontend && npm install
+      - name: eslint frontend
+        run: cd bloglist-frontend && npm run eslint
+      - name: unit testing frontend
+        run: cd bloglist-frontend && SKIP_PREFLIGHT_CHECK=true npm run test
+      - name: unit testing backend
+        run: npm run test
+      - name: e2e tests
+        uses: cypress-io/github-action@v2
+        with:
+          command: cd bloglist-frontend && npm run cypress
+          start: npm run dev && cd bloglist-frontend && npm start
+          wait-on: http://localhost:3001
