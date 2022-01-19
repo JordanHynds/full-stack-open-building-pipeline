@@ -27,9 +27,10 @@ jobs:
         run: npm run build
       - name: unit testing backend
         run: npm run test
+      - uses: actions/checkout@v2
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
-          command: cd bloglist-frontend && npm run cypress
+          # command: cd bloglist-frontend && npm run cypress
           start: npm start
           wait-on: http://localhost:3001
