@@ -26,7 +26,7 @@ jobs:
       - name: Create env file
         run: |
           cat << EOF > .env
-          mongo_Uri=${{ secrets.MONGO_URI }
+          mongo_Uri=${{ secrets.MONGO_URI }}
           SECRET=${{ secrets.SECRET }}
           EOF
       - name: build
