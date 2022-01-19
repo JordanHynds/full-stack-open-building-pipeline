@@ -8,7 +8,7 @@ describe("PhoneBook app", function () {
             name: "testingname",
         }
         cy.request("POST", "http://localhost:3001/api/users/", user)
-        cy.visit("http://localhost:3000")
+        cy.visit("http://localhost:3001")
     })
 
     it("Login form is shown", function () {
@@ -38,7 +38,7 @@ describe("PhoneBook app", function () {
                 username: "testingusername", password: "password"
             }).then(response => {
                 localStorage.setItem("loggedBlogUser", JSON.stringify(response.body))
-                cy.visit("http://localhost:3000")
+                cy.visit("http://localhost:3001")
             })
         })
 

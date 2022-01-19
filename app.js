@@ -11,7 +11,6 @@ const loginRouter = require("./controllers/Login")
 const testingRouter = require("./controllers/Testing")
 const middleware = require("./utils/middleware")
 
-console.log(config.mongoUri)
 mongoose.connect(config.mongoUri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 
 app.use(express.static("build"))
