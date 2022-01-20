@@ -17,7 +17,7 @@ jobs:
           node-version: "12.x"
       - name: Create env file
         run: |
-          cat << EOF > .env
+          cat << EOF > test.js
           mongo_Uri="${{ secrets.MONGO_URI }}"
           SECRET="${{ secrets.SECRET }}"
           EOF
