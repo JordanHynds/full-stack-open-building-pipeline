@@ -8,38 +8,30 @@ on:
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-18.04
+    environment: Config
     steps:
       - name: check
         run: echo "hello"
+
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - name: create .env
-        run: touch .env
-      # - name: Create env file
-      #   run: |
-      #     cat << EOF > .env
-      #     mongo_Uri="${{ secrets.MONGO_URI }}"
-      #     SECRET="${{ secrets.SECRET }}"
-      #     EOF
-      - name: check .env
-        run: ls -l
-      # - name: npm install backend
-      #   run: npm install
-      # - name: npm install frontend
-      #   run: cd bloglist-frontend && npm install
-      # - name: eslint backend
-      #   run: npm run eslint
-      # - name: eslint frontend
-      #   run: cd bloglist-frontend && npm run eslint
-      # - name: build
-      #   run: npm run build
-      # - name: unit testing backend
-      #   run: npm run test
-      # - name: e2e tests
-      #   uses: cypress-io/github-action@v2
-      #   with:
-      #     command: cd bloglist-frontend && npm run cypress
-      #     start: npm start
-      #     wait-on: http://localhost:3001
+      - name: npm install backend
+        run: npm install
+      - name: npm install frontend
+        run: cd bloglist-frontend && npm install
+      - name: eslint backend
+        run: npm run eslint
+      - name: eslint frontend
+        run: cd bloglist-frontend && npm run eslint
+      - name: build
+        run: npm run build
+      - name: unit testing backend
+        run: npm run test
+      - name: e2e tests
+        uses: cypress-io/github-action@v2
+        with:
+          command: cd bloglist-frontend && npm run cypress
+          start: npm start
+          wait-on: http://localhost:3001
