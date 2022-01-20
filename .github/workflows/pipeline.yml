@@ -15,6 +15,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+      - name: Create env file
+        run: |
+          cat << EOF > .env
+          mongo_Uri="${{ secrets.MONGO_URI }}"
+          SECRET="${{ secrets.SECRET }}"
+          EOF
       - name: npm install backend
         run: npm install
       - name: npm install frontend
@@ -23,12 +29,6 @@ jobs:
         run: npm run eslint
       - name: eslint frontend
         run: cd bloglist-frontend && npm run eslint
-      - name: Create env file
-        run: |
-          cat << EOF > .env
-          mongo_Uri="${{ secrets.MONGO_URI }}"
-          SECRET="${{ secrets.SECRET }}"
-          EOF
       - name: build
         run: npm run build
       - name: unit testing backend
