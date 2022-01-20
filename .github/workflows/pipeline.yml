@@ -37,6 +37,9 @@ jobs:
       - name: eslint frontend
         run: cd bloglist-frontend && npm run eslint
       - name: unit testing backend
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          SECRET: ${{ secrets.SECRET }}
         run: npm run test
       - name: build
         run: npm run build
