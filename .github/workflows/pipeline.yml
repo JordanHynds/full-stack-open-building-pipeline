@@ -11,6 +11,7 @@ jobs:
     env:
       MONGO_URI: ${{ secrets.MONGO_URI }}
       SECRET: ${{ secrets.SECRET }}
+      TEST_MONGO_URI:
     steps:
       - name: check
         run: echo "hello"
