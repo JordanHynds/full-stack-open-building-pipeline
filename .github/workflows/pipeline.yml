@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - uses: create .env
+      - name: create .env
         run: touch .env
       # - name: Create env file
       #   run: |
