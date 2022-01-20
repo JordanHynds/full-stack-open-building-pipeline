@@ -15,29 +15,30 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - name: Create env file
-        run: |
-          cat << EOF > test.env
-          mongo_Uri="${{ secrets.MONGO_URI }}"
-          SECRET="${{ secrets.SECRET }}"
-          EOF
-      - name: check test.env
-        run: cat test.env
-      - name: npm install backend
-        run: npm install
-      - name: npm install frontend
-        run: cd bloglist-frontend && npm install
-      - name: eslint backend
-        run: npm run eslint
-      - name: eslint frontend
-        run: cd bloglist-frontend && npm run eslint
-      - name: unit testing backend
-        run: npm run test
-      - name: build
-        run: npm run build
-      - name: e2e tests
-        uses: cypress-io/github-action@v2
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
         with:
-          command: cd bloglist-frontend && npm run cypress
-          start: npm start
-          wait-on: http://localhost:3001
+          envkey_mongo_Uri: ${{ secrets.MONGO_URI }}
+          envkey_secret: ${{ secrets.SECRET }}
+          #directory: <directory_name>
+          file_name: .env
+      - name: check .env
+        run: ls -l && cat  .env
+      # - name: npm install backend
+      #   run: npm install
+      # - name: npm install frontend
+      #   run: cd bloglist-frontend && npm install
+      # - name: eslint backend
+      #   run: npm run eslint
+      # - name: eslint frontend
+      #   run: cd bloglist-frontend && npm run eslint
+      # - name: unit testing backend
+      #   run: npm run test
+      # - name: build
+      #   run: npm run build
+      # - name: e2e tests
+      #   uses: cypress-io/github-action@v2
+      #   with:
+      #     command: cd bloglist-frontend && npm run cypress
+      #     start: npm start
+      #     wait-on: http://localhost:3001
