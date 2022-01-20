@@ -22,7 +22,7 @@ jobs:
           SECRET="${{ secrets.SECRET }}"
           EOF
       - name: check test.env
-        run: ls -l
+        run: cat test.env
       # - name: npm install backend
       #   run: npm install
       # - name: npm install frontend
