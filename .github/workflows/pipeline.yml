@@ -35,6 +35,5 @@ jobs:
         uses: cypress-io/github-action@v2
         with:
           start: npm start
-          run: cd bloglist-frontend
           wait-on: http://localhost:3001
           command: npm run cypress
