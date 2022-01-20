@@ -31,10 +31,10 @@ jobs:
         run: npm run eslint
       - name: eslint frontend
         run: cd bloglist-frontend && npm run eslint
-      - name: build
-        run: npm run build
       - name: unit testing backend
         run: npm run test
+      - name: build
+        run: npm run build
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
