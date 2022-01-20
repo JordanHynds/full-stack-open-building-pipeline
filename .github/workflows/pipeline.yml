@@ -21,8 +21,8 @@ jobs:
           mongo_Uri="${{ secrets.MONGO_URI }}"
           SECRET="${{ secrets.SECRET }}"
           EOF
-      -name: check test.env
-        run: ls -l    
+      - name: check test.env
+        run: ls -l
       # - name: npm install backend
       #   run: npm install
       # - name: npm install frontend
