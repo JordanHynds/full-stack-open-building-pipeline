@@ -15,12 +15,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - name: Create env file
-        run: |
-          cat << EOF > .env
-          mongo_Uri="${{ secrets.MONGO_URI }}"
-          SECRET="${{ secrets.SECRET }}"
-          EOF
+      - uses: create .env
+        run: touch .env
+      # - name: Create env file
+      #   run: |
+      #     cat << EOF > .env
+      #     mongo_Uri="${{ secrets.MONGO_URI }}"
+      #     SECRET="${{ secrets.SECRET }}"
+      #     EOF
       - name: check .env
         run: ls -l
       # - name: npm install backend
