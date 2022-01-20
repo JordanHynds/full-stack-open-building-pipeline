@@ -8,6 +8,9 @@ on:
 jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-18.04
+    env:
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+      SECRET: ${{ secrets.SECRET }}
     steps:
       - name: check
         run: echo "hello"
@@ -15,13 +18,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_MONGO_URI: ${{ secrets.MONGO_URI }}
-          envkey_SECRET: ${{ secrets.SECRET }}
-          #directory: <directory_name>
-          file_name: .env
+      # - name: Make envfile
+      #   uses: SpicyPizza/create-envfile@v1
+      #   with:
+      #     envkey_MONGO_URI: ${{ secrets.MONGO_URI }}
+      #     envkey_SECRET: ${{ secrets.SECRET }}
+      #     #directory: <directory_name>
+      #     file_name: .env
+
       - name: check .env
         run: ls -al && cat  .env
       - name: npm install backend
