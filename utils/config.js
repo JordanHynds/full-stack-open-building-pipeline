@@ -1,4 +1,4 @@
-require("dotenv").config({ path: ".env" })
+require("dotenv").config({ path: "test.env" })
 
 const PORT = process.env.PORT
 
