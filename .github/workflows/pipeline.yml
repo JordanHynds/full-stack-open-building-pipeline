@@ -20,7 +20,7 @@ jobs:
         with:
           envkey_MONGO_URI: ${{ secrets.MONGO_URI }}
           envkey_SECRET: ${{ secrets.SECRET }}
-          #directory: <directory_name>
+          directory: <pwd>
           file_name: .env
       - name: check .env
         run: ls -l && cat  .env
