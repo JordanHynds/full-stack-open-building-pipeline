@@ -20,10 +20,10 @@ jobs:
         with:
           envkey_MONGO_URI: ${{ secrets.MONGO_URI }}
           envkey_SECRET: ${{ secrets.SECRET }}
-          directory: <pwd>
+          #directory: <directory_name>
           file_name: .env
       - name: check .env
-        run: ls -l && cat  .env
+        run: ls -la && cat  .env
       - name: npm install backend
         run: npm install
       - name: npm install frontend
