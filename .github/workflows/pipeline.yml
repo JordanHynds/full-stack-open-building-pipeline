@@ -14,8 +14,6 @@ jobs:
       TEST_MONGO_URI: ${{ secrets.TEST_MONGO_URI }}
       COMMIT_MESSAGES: ${{contains(join(toJson(github.event.commits.*.message)), '#skip') }}
     steps:
-      - name: check
-        run: echo "hello"
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
