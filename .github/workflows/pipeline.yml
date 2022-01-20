@@ -23,7 +23,7 @@ jobs:
           #directory: <directory_name>
           file_name: .env
       - name: check .env
-        run: ls -la && cat  .env
+        run: ls -al && cat  .env
       - name: npm install backend
         run: npm install
       - name: npm install frontend
