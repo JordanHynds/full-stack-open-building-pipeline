@@ -34,6 +34,7 @@ jobs:
       - name: e2e tests
         uses: cypress-io/github-action@v2
         with:
-          command: npm run cypress
-          start: npm start && cd bloglist-frontend
+          start: npm start
+          run: cd bloglist-frontend
           wait-on: http://localhost:3001
+          command: npm run cypress
