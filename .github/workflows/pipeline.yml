@@ -37,3 +37,12 @@ jobs:
           start: npm start
           wait-on: http://localhost:3001
           command: npm run cypress
+      - name: deployment
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: blooming-plains-89373
+          heroku_email: jordanroberthynds@gmail.com
+          healthcheck: "https://blooming-plains-89373.herokuapp.com/health"
+          checkstring: "ok"
+          rollbackonhealthcheckfailed: true
