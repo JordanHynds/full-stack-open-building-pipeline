@@ -12,9 +12,8 @@ jobs:
       MONGO_URI: ${{ secrets.MONGO_URI }}
       SECRET: ${{ secrets.SECRET }}
       TEST_MONGO_URI: ${{ secrets.TEST_MONGO_URI }}
+      COMMIT_MESSAGES: ${{contains(join(toJson(github.event.commits.*.message)), '#skip') }}
     steps:
-      - name: check
-        run: echo "hello"
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
@@ -39,6 +38,7 @@ jobs:
           command: npm run cypress
       - name: deployment
         uses: akhileshns/heroku-deploy@v3.12.12
+        if: ${{ github.event_name == 'push' && fromJson(env.COMMIT_MESSAGES) == false}}
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: fast-dawn-14289
@@ -46,3 +46,10 @@ jobs:
           healthcheck: "https://blooming-plains-89373.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
+      - uses: actions/checkout@v2
+      - name: bump version and push tag
+        uses: anothrNick/github-tag-action@1.33.0
+        if: ${{ github.event_name == 'push' && fromJson(env.COMMIT_MESSAGES) == false}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEFAULT_BUMP: patch
